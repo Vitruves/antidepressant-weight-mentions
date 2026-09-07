@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.DS_Store
+runs/
+*.pt
+predictions*.csv
+predictions*.parquet
+.ipynb_checkpoints/
+
+# corpora live on FigShare, not here
+data/*.csv
+data/*.xlsx

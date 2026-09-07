@@ -1,0 +1,39 @@
+# antidepressant-weight-mentions - reproduction environment
+#
+# Python 3.10 - 3.12.  Every pin below is the version the published benchmark
+# was produced with, and every one of them still publishes a wheel for 3.10.
+#
+# GPU: the torch pin resolves to the default PyPI build (CUDA 12.1 on Linux,
+# CPU on macOS).  For a different CUDA version install torch first, e.g.
+#   pip install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu118
+# then run this file.
+
+# --- core ---------------------------------------------------------------
+torch==2.4.0
+transformers==4.52.4          # >=4.48 is required for the ModernBERT family
+tokenizers==0.21.1
+huggingface-hub==0.32.6
+safetensors==0.5.3
+accelerate==1.7.0
+
+# --- data and metrics ---------------------------------------------------
+numpy==2.2.6                  # last series with Python 3.10 wheels (2.3 needs >=3.11)
+pandas==2.2.3
+scikit-learn==1.7.0
+scipy==1.15.3
+openpyxl==3.1.5               # required by pandas to read the .xlsx corpora
+pyarrow==19.0.1               # optional, for the .parquet input path
+tqdm==4.67.1
+
+# --- model-specific -----------------------------------------------------
+einops==0.8.1                 # needed by the remote code of Alibaba-NLP/gte-large-en-v1.5
+
+# --- optional -----------------------------------------------------------
+# flash-attn accelerates the ModernBERT models but needs a CUDA toolchain and
+# will fail to build on CPU-only or macOS machines. Results are unchanged
+# without it. Install separately if wanted:
+#   pip install flash-attn==2.7.4.post1 --no-build-isolation
+#
+# argparse-color-formatter only colourises --help; the script degrades
+# gracefully without it.
+# argparse-color-formatter==2.0.0.post1

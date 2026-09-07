@@ -1,0 +1,22 @@
+hf_id,short,params_m,layers,hidden,context,family,domain
+prajjwal1/bert-tiny,BERT-tiny,4.4,2,128,512,Compact,General
+prajjwal1/bert-mini,BERT-mini,11.2,4,256,512,Compact,General
+sentence-transformers/all-MiniLM-L6-v2,all-MiniLM-L6-v2,22.7,6,384,512,Embedding,General
+microsoft/MiniLM-L12-H384-uncased,MiniLM-L12-H384,33.4,12,384,512,Compact,General
+distilbert/distilbert-base-uncased,DistilBERT-base,67.0,6,768,512,Compact,General
+google-bert/bert-base-uncased,BERT-base-uncased,110.1,12,768,512,First-generation,General
+google-bert/bert-base-cased,BERT-base-cased,108.9,12,768,512,First-generation,General
+google/electra-base-discriminator,ELECTRA-base,108.9,12,768,512,First-generation,General
+microsoft/deberta-v3-base,DeBERTa-v3-base,183.8,12,768,512,Optimised,General
+intfloat/e5-base-v2,E5-base-v2,109.5,12,768,512,Embedding,General
+BAAI/bge-base-en-v1.5,BGE-base-en-v1.5,109.5,12,768,512,Embedding,General
+answerdotai/ModernBERT-base,ModernBERT-base,149.7,22,768,8192,ModernBERT,General
+microsoft/BiomedNLP-BiomedBERT-base-uncased-abstract,BiomedBERT-base,109.5,12,768,512,First-generation,Biomedical
+medicalai/ClinicalBERT,ClinicalBERT,134.7,6,768,512,Compact,Biomedical
+Simonlee711/Clinical_ModernBERT,Clinical ModernBERT,136.6,22,768,8192,ModernBERT,Biomedical
+intfloat/e5-large-v2,E5-large-v2,335.1,24,1024,512,Embedding,General
+FacebookAI/roberta-large,RoBERTa-large,355.4,24,1024,512,Optimised,General
+WhereIsAI/UAE-Large-V1,UAE-Large-V1,335.1,24,1024,512,Embedding,General
+Alibaba-NLP/gte-large-en-v1.5,GTE-large-en-v1.5,434.1,24,1024,8192,Embedding,General
+answerdotai/ModernBERT-large,ModernBERT-large,395.9,28,1024,8192,ModernBERT,General
+answerdotai/ModernBERT-Large-Instruct,ModernBERT-Large-Instruct,395.9,28,1024,8192,ModernBERT,General
