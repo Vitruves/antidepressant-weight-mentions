@@ -1,0 +1,39 @@
+cff-version: 1.2.0
+message: "If you use the code, the corpus or the benchmark, please cite the article and the dataset."
+type: software
+title: "antidepressant-weight-mentions"
+authors:
+  - family-names: Yokoyama
+    given-names: Taïoh
+    affiliation: "Faculté de Pharmacie, Université de Strasbourg"
+  - family-names: Natter
+    given-names: Johan
+    affiliation: "Faculté de Pharmacie, Université de Strasbourg"
+  - family-names: Godet
+    given-names: Julien
+    affiliation: "Faculté de Pharmacie, Université de Strasbourg; ICube, UMR 7357, CNRS; Hôpitaux Universitaires de Strasbourg"
+license: Apache-2.0
+repository-code: "https://github.com/Vitruves/antidepressant-weight-mentions"
+preferred-citation:
+  type: article
+  title: "Detecting patient-reported mentions of weight change in online antidepressant reviews: an annotated corpus and a benchmark of 21 transformer encoders"
+  authors:
+    - family-names: Yokoyama
+      given-names: Taïoh
+    - family-names: Natter
+      given-names: Johan
+    - family-names: Godet
+      given-names: Julien
+  year: 2026
+  status: submitted
+references:
+  - type: data
+    title: "Patient-reported weight-change mentions in online antidepressant reviews: two annotated corpora and an encoder benchmark"
+    authors:
+      - family-names: Yokoyama
+        given-names: Taïoh
+      - family-names: Natter
+        given-names: Johan
+      - family-names: Godet
+        given-names: Julien
+    doi: 10.6084/m9.figshare.33456934

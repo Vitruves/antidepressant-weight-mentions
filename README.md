@@ -36,7 +36,7 @@ Code and results accompanying the article:
 
 **Objective.** Online drug reviews are a large, under-used source of patient-reported experience. We asked how reliably compact transformer encoders can identify, in free-text antidepressant reviews, whether the writer mentions weight gain, weight loss, or makes no reference to a change in body weight. The claim is deliberately restricted to mention detection: no attempt is made to confirm an adverse drug reaction, to quantify body weight, or to establish causality.
 
-**Materials and methods.** A sample of 8,000 reviews, stratified by source website and by molecule, was drawn from 80,594 reviews of FDA-approved antidepressants collected from four consumer health websites. It covers 31 molecules and was annotated into three classes by ten operators under the supervision of drug experts (Krippendorff's α = 0.841 on 3,500 doubly annotated reviews). A label of weight gain or weight loss was applied only when the change was attributed by the writer to the drug the review was about. Models were trained on that corpus and evaluated on a separate batch of 2,010 reviews, annotated afterwards on different reviews under the same guideline, sharing no item with the training corpus and differing from it in molecule coverage (19 of 31 molecules), source mix and class prevalence. Twenty-one pre-trained encoders spanning 4.4 M to 434 M parameters, five architecture generations and two pre-training domains were fine-tuned under a single common protocol. Macro-F1 was defined a priori as the primary metric; accuracy with 95 % Wilson intervals, macro precision and recall, Cohen's κ and quadratic weighted κ are reported alongside.
+**Materials and methods.** A sample of 8,000 reviews, stratified by source website and by molecule, was drawn from 80,594 reviews of FDA-approved antidepressants collected from four consumer health websites. It covers 31 molecules and was annotated into three classes by ten operators under the supervision of drug experts (Krippendorff's α = 0.841, 95 % CI [0.803; 0.875], on 3,500 doubly annotated reviews). A label of weight gain or weight loss was applied only when the change was attributed by the writer to the drug the review was about. Models were trained on that corpus and evaluated on a separate batch of 2,010 reviews, annotated afterwards on different reviews under the same guideline, sharing no item with the training corpus and differing from it in molecule coverage (19 of 31 molecules), source mix and class prevalence. Twenty-one pre-trained encoders spanning 4.4 M to 434 M parameters, five architecture generations and two pre-training domains were fine-tuned under a single common protocol. Macro-F1 was defined a priori as the primary metric; accuracy with 95 % Wilson intervals, macro precision and recall, Cohen's κ and quadratic weighted κ are reported alongside.
 
 **Results.** The evaluation batch contained 87.7 % reviews with no reference to weight change, 8.7 % weight gain and 3.6 % weight loss; a majority-class classifier reaches 0.877 accuracy but only 0.311 macro-F1. Across the 21 encoders, accuracy spanned a narrow band (0.924–0.990) whereas macro-F1 spanned 0.557–0.964 and cleanly separated four models that collapsed onto the majority class from seventeen that did not. The best model was ModernBERT-Large-Instruct (macro-F1 0.964, κ 0.955, accuracy 0.990, 95 % CI 0.985–0.994); ModernBERT-base (150 M parameters) outperformed every first-generation encoder tested, including models more than twice its size. Macro-F1 increased with model size (Spearman ρ = 0.79), but architecture generation mattered more than scale, and biomedical or clinical pre-training conferred no advantage. Per-class recall exposed the failure mode of the weakest encoders: all four never predicted weight loss at all (recall 0.000) while reaching 0.94–0.99 recall on weight gain, a pattern invisible in accuracy.
 
@@ -74,7 +74,7 @@ Columns: `ID`, `REVIEW`, `DRUG`, `WEIGHT_CHANGE` (0 = no mention, 1 = gain, 2 = 
 
 **Collection.** Reviews were collected between August and November 2022 from Drugs.com, WebMD, Everyday Health and Ask a Patient, giving 80,594 reviews of FDA-approved antidepressants from which the annotated samples were drawn. The Ask a Patient reviews were supplied by Askapatient.com to cover rare molecules, monoamine oxidase inhibitors and ATC classes the larger platforms barely reach. They are distinct from the public PsyTAR corpus, which was not used.
 
-**Annotation.** Ten operators (two pharmacists, one general practitioner, two pharmacy students and five operators without drug-specific expertise) worked from a written guideline under drug-expert supervision. 3,500 of the 8,000 reviews were annotated twice, producing 96 discrepancies (2.74 %), all adjudicated by a single expert reviewer. Krippendorff's α over the doubly annotated subset was 0.841.
+**Annotation.** Ten operators (two pharmacists, one general practitioner, two pharmacy students and five operators without drug-specific expertise) worked from a written guideline under drug-expert supervision. 3,500 of the 8,000 reviews were annotated twice, producing 96 discrepancies (2.74 %), all adjudicated by a single expert reviewer. Krippendorff's α over the doubly annotated subset was 0.841 (95 % CI [0.803; 0.875]).
 
 **Two disjoint sets.** The evaluation batch was annotated after the training corpus was frozen, on different reviews, and differs from it in molecule coverage, source mix and class prevalence. **Do not merge the two sets** if you want numbers comparable to those reported here.
 
@@ -134,6 +134,7 @@ scripts/   BERT_train.py         fine-tuning and evaluation
            fast_predictions.py   batched inference over a large table
 results/   benchmark.csv         the 21 models, all metrics
            models_meta.csv       parameters, depth, context, family
+CITATION.cff                    citation metadata
 ```
 
 ## Reproducing the benchmark
@@ -184,7 +185,7 @@ Reads CSV, TSV, JSON, JSONL, Excel or Parquet. Use `--input-chunksize` (or `--au
 
 ## Citation
 
-If you use the code, the corpus or the benchmark, please cite the article and the dataset. The article reference will be completed on publication.
+If you use the code, the corpus or the benchmark, please cite the article and the dataset. The article reference will be completed on publication. The same metadata is in `CITATION.cff`, which feeds GitHub's **Cite this repository** button.
 
 ```bibtex
 @article{yokoyama_weight_mentions,
